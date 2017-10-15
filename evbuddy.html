@@ -1,0 +1,190 @@
+<!DOCTYPE HTML>
+<html lang="en" onload="updateGen()">
+	<head>
+		<meta charset="utf-8">
+		<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+		<title>EV Buddy</title>
+		<link rel="stylesheet" href="base.css"/>
+		<script src="script.js"></script>
+	</head>
+	<body>
+		<header>
+			<h1>EV Buddy</h1>
+		</header>
+		<main id="main">
+			<div id="counter">
+				<div id="hp_display" class="hp">
+					<label><input type="text" name="hp_display" class="hp" onchange="validateEV('hp_display')" maxlength="3" value="0"/>HP</label>
+				</div>
+				<div id="atk_display" class="atk">
+					<label><input type="text" name="atk_display" class="atk" onchange="validateEV('atk_display')" maxlength="3" value="0"/>Atk</label>
+				</div>
+				<div id="def_display" class="def">
+					<label><input type="text" name="def_display" class="def" onchange="validateEV('def_display')" maxlength="3" value="0"/>Def</label>
+				</div>
+				<div id="spa_display" class="spa">
+					<label><input type="text" name="spa_display" class="spa" onchange="validateEV('spa_display')" maxlength="3" value="0"/>SpA</label>
+				</div>
+				<div id="spd_display" class="spd">
+					<label><input type="text" name="spd_display" class="spd" onchange="validateEV('spd_display')" maxlength="3" value="0"/>SpD</label>
+				</div>
+				<div id="spe_display" class="spe">
+					<label><input type="text" name="spe_display" class="spe" onchange="validateEV('spe_display')" maxlength="3" value="0"/>Spe</label>
+				</div>
+			</div>
+			<div id="form_container">
+				<h1 id="generation_title">
+					<select id="gen_list" onchange="updateGen()">
+						<option value="7">Generation VII</option>
+						<option value="6">Generation VI</option>
+						<option value="5">Generation V</option>
+						<option value="4">Generation IV</option>
+						<option value="3">Generation III</option>
+					</select>
+				</h1>
+				<div class="increments">
+					<div>
+						<button class="hp" onclick="increment('hp')">&uarr;</button>
+					</div>
+					<div>
+						<button class="atk" onclick="increment('atk')">&uarr;</button>
+					</div>
+					<div>
+						<button class="def" onclick="increment('def')">&uarr;</button>
+					</div>
+					<div>
+						<button class="spa" onclick="increment('spa')">&uarr;</button>
+					</div>
+					<div>
+						<button class="spd" onclick="increment('spd')">&uarr;</button>
+					</div>
+					<div>
+						<button class="spe" onclick="increment('spe')">&uarr;</button>
+					</div>
+				</div>
+				<div id="numbers">
+					<div class="hp">
+						<input type="text" name="hp" id="hp" class="hp" readonly="readonly" value="0" />
+					</div>
+					<div class="atk">
+						<input type="text" name="atk" id="atk" class="atk" readonly="readonly" value="0" />
+					</div>
+					<div class="def">
+						<input type="text" name="def" id="def" class="def" readonly="readonly" value="0" />
+					</div>
+					<div class="spa">
+						<input type="text" name="spa" id="spa" class="spa" readonly="readonly" value="0" />
+					</div>
+					<div class="spd">
+						<input type="text" name="spd" id="spd" class="spd" readonly="readonly" value="0" />
+					</div>
+					<div class="spe">
+						<input type="text" name="spe" id="spe" class="spe" readonly="readonly" value="0" />
+					</div>
+				</div>
+				<div class="increments">
+					<div>
+						<button class="hp" onclick="decrement('hp')">&darr;</button>
+					</div>
+					<div>
+						<button class="atk" onclick="decrement('atk')">&darr;</button>
+					</div>
+					<div>
+						<button class="def" onclick="decrement('def')">&darr;</button>
+					</div>
+					<div>
+						<button class="spa" onclick="decrement('spa')">&darr;</button>
+					</div>
+					<div>
+						<button class="spd" onclick="decrement('spd')">&darr;</button>
+					</div>
+					<div>
+						<button class="spe" onclick="decrement('spe')">&darr;</button>
+					</div>
+				</div>
+				<div id="button_box">
+					<button id="reset_form" onclick="resetForm()">Reset Form</button>
+					<button id="submit" onclick="check()">"Faint"</button>
+					<button id="reset_spread" onclick="resetSpread()">Reset Spread</button>
+				</div>
+				<div id="power_items">
+					<div class="header_box">
+						<h1>Power Items</h1>
+						<hr/>
+					</div>
+					<br/>
+					<br/>
+					<div id="items">
+						<div>
+							<label for="weight" class="hp">Weight</label>
+						</div>
+						<div>
+							<label for="bracer" class="atk">Bracer</label>						
+						</div>
+						<div>
+							<label for="belt" class="def">Belt</label>					
+						</div>
+						<div>
+							<label for="lens" class="spa">Lens</label>					
+						</div>
+						<div>
+							<label for="band" class="spd">Band</label>
+						</div>
+						<div>
+							<label for="anklet" class="spe">Anklet</label>
+						</div>
+					</div>
+					<div id="item_inputs">
+						<div>
+							<input type="radio" name="held_item" id="weight" />
+						</div>
+						<div>
+							<input type="radio" name="held_item" id="bracer" />
+						</div>
+						<div>
+							<input type="radio" name="held_item" id="belt" />
+						</div>
+						<div>
+							<input type="radio" name="held_item" id="lens" />
+						</div>
+						<div>
+							<input type="radio" name="held_item" id="band" />
+						</div>
+						<div>
+							<input type="radio" name="held_item" id="anklet" />
+						</div>
+					</div>
+					<br/>
+				</div>
+				<div class="header_box">
+					<h1>Special</h1>
+					<hr/>
+				</div>
+				<br/>
+				<br/>
+				<div id="special">
+					<div>
+						<label for="brace">Macho Brace</label>
+					</div>
+					<div>
+						<label for="pokerus">Pokérus</label>
+					</div>
+					<div id="ally_label_box">
+						<label for="ally">SOS Battle Ally</label>
+					</div>
+				</div>
+				<div id="special_inputs">
+					<div>
+						<input type="radio" name="held_item" id="brace"/>
+					</div>
+					<div>
+						<input type="checkbox" name="pokerus" id="pokerus"/>
+					</div>
+					<div id="ally_box">
+						<input type="checkbox" name="ally" id="ally"/>
+					</div>
+				</div>
+			</div>
+		</main>
+	</body>
+</html>
